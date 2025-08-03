@@ -1,11 +1,9 @@
 const express = require('express');
-const authRoutes = require('./auth');
 const contactRoutes = require('./contact');
 
 const router = express.Router();
 
 // Mount routers
-router.use('/auth', authRoutes);
 router.use('/contact', contactRoutes);
 
 // Health check route

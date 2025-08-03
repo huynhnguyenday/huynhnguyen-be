@@ -46,20 +46,12 @@ npm start
 
 ## API Endpoints
 
-### Contact Form (Public)
+### Contact Management (Public - No Authentication Required)
 - `POST /api/contact` - Gửi form liên hệ (họ tên, số điện thoại, email, lời nhắn)
-
-### Contact Management (Admin Only)
 - `GET /api/contact` - Lấy danh sách tất cả liên hệ
 - `GET /api/contact/:id` - Lấy chi tiết một liên hệ
 - `PUT /api/contact/:id` - Cập nhật trạng thái liên hệ
 - `DELETE /api/contact/:id` - Xóa liên hệ
-
-### Authentication
-- `POST /api/auth/register` - Đăng ký user mới
-- `POST /api/auth/login` - Đăng nhập
-- `GET /api/auth/logout` - Đăng xuất
-- `GET /api/auth/me` - Lấy thông tin user hiện tại (cần authentication)
 
 ### Health Check
 - `GET /api/health` - Kiểm tra trạng thái server
@@ -67,8 +59,7 @@ npm start
 ## Tính năng
 
 - ✅ Kết nối MongoDB với Mongoose
-- ✅ Authentication với JWT
-- ✅ Password encryption với bcrypt
+- ✅ Contact form API (Public)
 - ✅ Error handling middleware
 - ✅ Rate limiting
 - ✅ Security headers với Helmet
@@ -83,8 +74,6 @@ npm start
 - **Express.js** - Web framework
 - **MongoDB** - Database
 - **Mongoose** - ODM cho MongoDB
-- **JWT** - JSON Web Tokens cho authentication
-- **bcryptjs** - Password hashing
 - **Helmet** - Security headers
 - **CORS** - Cross-origin resource sharing
 - **Morgan** - HTTP request logger
@@ -112,10 +101,8 @@ Khi deploy lên Railway, cần cấu hình các environment variables sau:
 
 1. **MONGODB_URI**: Connection string MongoDB Atlas
 2. **DB_NAME**: Tên database (optional, có thể để trong connection string)
-3. **JWT_SECRET**: Secret key cho JWT
-4. **JWT_EXPIRES_IN**: Thời gian hết hạn JWT (default: 7d)
-5. **RATE_LIMIT_WINDOW_MS**: Thời gian window cho rate limiting (default: 900000)
-6. **RATE_LIMIT_MAX_REQUESTS**: Số request tối đa (default: 100)
+3. **RATE_LIMIT_WINDOW_MS**: Thời gian window cho rate limiting (default: 900000)
+4. **RATE_LIMIT_MAX_REQUESTS**: Số request tối đa (default: 100)
 
 **Lưu ý quan trọng**: Đảm bảo MongoDB Atlas cho phép kết nối từ Railway IP bằng cách:
 1. Vào MongoDB Atlas Dashboard

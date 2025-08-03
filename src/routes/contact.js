@@ -9,15 +9,11 @@ const {
 
 const router = express.Router();
 
-const { protect, authorize } = require("../middleware/auth");
-
-// Public routes
+// All routes are public now
 router.post("/", submitContact);
-
-// Protected routes (admin only)
-router.get("/", protect, authorize("admin"), getContacts);
-router.get("/:id", protect, authorize("admin"), getContact);
-router.put("/:id", protect, authorize("admin"), updateContactStatus);
-router.delete("/:id", protect, authorize("admin"), deleteContact);
+router.get("/", getContacts);
+router.get("/:id", getContact);
+router.put("/:id", updateContactStatus);
+router.delete("/:id", deleteContact);
 
 module.exports = router;
