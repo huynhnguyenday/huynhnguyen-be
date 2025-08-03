@@ -93,6 +93,7 @@ npm start
 
 ## Environment Variables
 
+### Local Development
 Tạo file `config.env` với các biến sau:
 
 ```
@@ -105,3 +106,18 @@ JWT_EXPIRES_IN=7d
 RATE_LIMIT_WINDOW_MS=900000
 RATE_LIMIT_MAX_REQUESTS=100
 ```
+
+### Railway Deployment
+Khi deploy lên Railway, cần cấu hình các environment variables sau:
+
+1. **MONGODB_URI**: Connection string MongoDB Atlas
+2. **DB_NAME**: Tên database (optional, có thể để trong connection string)
+3. **JWT_SECRET**: Secret key cho JWT
+4. **JWT_EXPIRES_IN**: Thời gian hết hạn JWT (default: 7d)
+5. **RATE_LIMIT_WINDOW_MS**: Thời gian window cho rate limiting (default: 900000)
+6. **RATE_LIMIT_MAX_REQUESTS**: Số request tối đa (default: 100)
+
+**Lưu ý quan trọng**: Đảm bảo MongoDB Atlas cho phép kết nối từ Railway IP bằng cách:
+1. Vào MongoDB Atlas Dashboard
+2. Network Access → ADD IP ADDRESS
+3. Chọn "ALLOW ACCESS FROM ANYWHERE" (0.0.0.0/0)
